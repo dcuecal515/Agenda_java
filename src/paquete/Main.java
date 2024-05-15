@@ -1,6 +1,6 @@
 package paquete;
 
-import java.util.Date;
+
 
 public class Main {
 
@@ -10,6 +10,16 @@ public class Main {
 		boolean esXOR;
 		
 		Contacto contacto = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com");
+		
+		Contacto contacto2 = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com");
+		
+		Lista lista = new Lista();
+		
+		lista.agregarContacto(contacto);
+		
+		lista.agregarContacto(contacto2);
+		
+		lista.mostrarLista();
 		
 		
 	}

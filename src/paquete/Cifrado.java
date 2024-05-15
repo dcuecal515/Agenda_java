@@ -2,16 +2,18 @@ package paquete;
 
 public class Cifrado {
 	
-	
 	/**
 	 * 
-	 * @param cadena Frase a cifrar
-	 * @param clave Clave necesaria para cifrar
-	 * @param esXOR true es cifrado XOR, false es cifrado Cesar
-	 * @return devuelve la frase cifrada según el tipo de cifrado
+	 * @param cadena, Permite ingresar la cadena de texto a cifrar
+	 * @param clave, Permite ingresar la clave para cifrar la cadena de texto con los distintos cifrados
+	 * @param esXOR Permite ingresar un boolean que si es true es cifrado XOR, false si es cifrado Cesar
+	 * @return devuelve la frase cifrada según el tipo de cifrado en forma de String
 	 */
 	public static String cifrar(String cadena, int clave, boolean esXOR) {
 		
+		/**
+		 * Atributo String res, Sirve para guardar la cadena de texto ya cifrada
+		 */
 		String res = "";
 		if(esXOR) {
 			
@@ -21,7 +23,13 @@ public class Cifrado {
 			}
 		}
 		else {
+			/**
+			 * Atributo String min, es el abecedario en minuscula
+			 */
 			String min = "abcdefghijklmnñopqrstuvwxyz";
+			/**
+			 * Atributo String may, es el abecedario en mayuscula
+			 */
 			String may = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 			
 			for (int i = 0; i < cadena.length(); i++) {
@@ -42,12 +50,6 @@ public class Cifrado {
 			}
 		}
 		return res;
-		
 	}
 	
-	
-	
-	
-	
 }
-
