@@ -52,4 +52,34 @@ public class Cifrado {
 		return res;
 	}
 	
+public static int cifrar2(int numero, int clave, boolean esXOR) {
+		
+		/**
+		 * Atributo int res, Sirve para guardar los números ya cifrados
+		 */
+		int res = 0;
+		
+		int[] digitos = new int[Integer.toString(numero).length()];
+		int i = digitos.length -1;
+		while(numero > 0) {
+			digitos[i]=numero%10;
+			numero=numero/10;
+			i--;
+		}
+		if(esXOR) {
+			
+			for (int j = 0; j < digitos.length; j++) {
+				res += (digitos[j] ^ clave);
+			}
+				
+		}
+		else {
+			
+				for (int j = 0; j < digitos.length; j++) {
+					res+= ((digitos[j]+clave)%10);
+				}
+			}
+		return res;
+	}
+	
 }

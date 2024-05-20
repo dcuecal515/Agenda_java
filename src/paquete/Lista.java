@@ -1,29 +1,22 @@
 package paquete;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Lista {
 	
 	/**
 	 * Atributo array de tipo Contacto, Sirve para guardar los contactos
 	 */
-	Contacto[] arraycontactos = new Contacto[20];
-	
-	/**
-	 * Atributo int pos, Sirve para saber la posicion en el array
-	 */
-	private int pos=0;
-
-	public int getPos() {
-		return pos;
-	}
+	List<Contacto> listacontactos = new ArrayList<Contacto>();
 	
 	public void agregarContacto(Contacto contacto) {
-		arraycontactos[pos]=contacto;
-		pos++;
+		listacontactos.add(contacto);
 	}
 	
 	public void mostrarLista() {
-		for (int i = 0; i < pos; i++) {
-			System.out.println(arraycontactos[i].describir());
+		for (Contacto contacto : listacontactos) {
+			System.out.println(contacto.describir());
 		}
 	}
 

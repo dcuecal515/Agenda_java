@@ -9,9 +9,9 @@ public class Main {
 		
 		boolean esXOR;
 		
-		Contacto contacto = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com");
+		Contacto contacto = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com","C/Francia 25190");
 		
-		Contacto contacto2 = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com");
+		Contacto contacto2 = new Contacto("Pepe","Cordero Arrollo","12-12-2012",666231223,"PepeArrCord@gmail.com","C/Mexico 25113");
 		
 		Lista lista = new Lista();
 		
@@ -21,6 +21,11 @@ public class Main {
 		
 		lista.mostrarLista();
 		
+		Menu menu = new Menu();
+		
+		int opcion = menu.mostrarMenu();
+		
+		menu.mostrarOpcion(opcion);
 		
 	}
 
