@@ -94,6 +94,4 @@ public class Contacto extends Persona {
 		des+=direccion;
 		return des;
 	}
-	
-	
 }

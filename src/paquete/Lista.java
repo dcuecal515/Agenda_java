@@ -10,20 +10,31 @@ public class Lista {
 	 * Atributo array de tipo Contacto, Sirve para guardar los contactos
 	 */
 	List<Contacto> listacontactos = new ArrayList<Contacto>();
+	Scanner sc = new Scanner(System.in);
 	
+	public Contacto pedirDatosContacto() {
+		System.out.println("Introduzca el nombre: ");
+        String nombre = sc.next();
+        sc.nextLine();
+        System.out.println("Introduzca los apellidos: ");
+        String apellidos = sc.nextLine();
+        System.out.println("Introduzca la fecha de nacimiento: ");
+        String fecha_nac = sc.next();
+        System.out.println("Introduzca el telefono: ");
+        int telefono = sc.nextInt();
+        System.out.println("Introduzca el email: ");
+        String email = sc.next();
+        System.out.println("Introduzca la direccion postal: ");
+        String direccion = sc.next();
+        return new Contacto(nombre,apellidos,fecha_nac,telefono,email,direccion);
+	}
 	public void agregarContacto(Contacto contacto) {
 		listacontactos.add(contacto);
 	}
 	
-	public void mostrarLista() {
-		for (Contacto contacto : listacontactos) {
-			System.out.println(contacto.describir());
-		}
-	}
-	
 	public Contacto buscarContacto(String nombre) {
 		for (Contacto contacto : listacontactos) {
-			if(contacto.getNombre().equals(nombre)) {
+			if(contacto.getNombre().equalsIgnoreCase(nombre)) {
 				return contacto;
 			}
 		}
@@ -96,50 +107,67 @@ public class Lista {
 	}
 	
 	public void consultarContacto(Contacto contacto) {
-		int opcion;
+		int opcion=0;
 		Scanner sc = new Scanner(System.in);
-		do {
-			System.out.println("|-----------------------------------|");
-			System.out.println("|   1. Cosultar nombre y apellidos  |");
-			System.out.println("|   2. Consultar numero de telefono |");
-			System.out.println("|   3. Consultar fecha de nacimiento|");
-			System.out.println("|   4. Consultar email              |");
-			System.out.println("|   5. Consultar direccion          |");
-			System.out.println("|   6. Salir                        |");
-			System.out.println("|-----------------------------------|");
-			System.out.println("| Elige una opcion: ");
-			opcion = sc.nextInt();
-			switch (opcion) {
-			case 1: {
-				System.out.println("Nombre: "+contacto.getNombre());
-				System.out.println("Apellidos: "+contacto.getApellidos());
-				break;
-			}
-			case 2: {
-				System.out.println("Telefono: "+contacto.getTelefono());
-				break;
-			}
-			case 3: {
-				System.out.println("Fecha: "+contacto.getFecha_nac());
-				break;
-			}
-			case 4: {
-				System.out.println("Email: "+contacto.getEmail());
-				break;
-			}
-			case 5: {
-				System.out.println("Direccion: "+contacto.getDireccion());
-				break;
-			}
-			case 6: {
-				System.out.println("Saliendo....");
-				break;
-			}
-			default:
-				System.out.println("No has seleccionado una opcion valida");
-			}
-		} while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5 && opcion != 6);
-		
+		while (opcion != 6) {
+			do {
+				System.out.println("|-----------------------------------|");
+				System.out.println("|   1. Cosultar nombre y apellidos  |");
+				System.out.println("|   2. Consultar numero de telefono |");
+				System.out.println("|   3. Consultar fecha de nacimiento|");
+				System.out.println("|   4. Consultar email              |");
+				System.out.println("|   5. Consultar direccion          |");
+				System.out.println("|   6. Salir                        |");
+				System.out.println("|-----------------------------------|");
+				System.out.println("| Elige una opcion: ");
+				opcion = sc.nextInt();
+				switch (opcion) {
+				case 1: {
+					System.out.println("Nombre: "+contacto.getNombre());
+					System.out.println("Apellidos: "+contacto.getApellidos());
+					break;
+				}
+				case 2: {
+					System.out.println("Telefono: "+contacto.getTelefono());
+					break;
+				}
+				case 3: {
+					System.out.println("Fecha: "+contacto.getFecha_nac());
+					break;
+				}
+				case 4: {
+					System.out.println("Email: "+contacto.getEmail());
+					break;
+				}
+				case 5: {
+					System.out.println("Direccion: "+contacto.getDireccion());
+					break;
+				}
+				case 6: {
+					System.out.println("Saliendo....");
+					break;
+				}
+				default:
+					System.out.println("No has seleccionado una opcion valida");
+				}
+			} while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5 && opcion != 6);
+		}
+	}
+	
+	public void eliminarContacto(Contacto contacto) {
+		listacontactos.remove(contacto);
+		System.out.println("Eliminando contacto con nombre: "+contacto.getNombre());
+	}
+	
+	public void numeroContactos() {
+		System.out.println("Tienes un total de "+listacontactos.size()+" contactos");
+	}
+	
+	public void listarContactos() {
+		System.out.println("Contactos: ");
+		for (Contacto contacto : listacontactos) {
+			System.out.println(contacto.describir());
+		}
 	}
 
 }
