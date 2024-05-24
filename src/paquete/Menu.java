@@ -41,7 +41,7 @@ public class Menu {
                         else
                         	tipoC = true;
                     }else 
-                    	System.out.println("Ha introducido una letra no valida vuelva a introducir X o C");
+                    	System.out.println("Ha introducido una letra no valida vuelva a introducir X o C: ");
 				} while (xor.toUpperCase() != "X" && xor.toUpperCase() != "C");
                 
                 mostrarOpcion(mostrarMenu());
@@ -64,15 +64,19 @@ public class Menu {
                 mostrarOpcion(mostrarMenu());
                 break;
             case 2:
-                System.out.println("Editar contacto");
+                System.out.println("Introduce el nombre del contacto a editar: ");
+                nombre = sc.next();
+                lista.editarContacto(lista.buscarContacto(nombre));
                 mostrarOpcion(mostrarMenu());
                 break;
             case 3:
-                System.out.println("Consultar contacto");
+            	System.out.println("Introduce el nombre del contacto a consultar: ");
+                nombre = sc.next();
+                lista.consultarContacto(lista.buscarContacto(nombre));
                 mostrarOpcion(mostrarMenu());
                 break;
             case 4:
-                System.out.println("Consultar contacto");
+                System.out.println("Eliminar contacto");
                 mostrarOpcion(mostrarMenu());
                 break;
             case 5:
@@ -95,4 +99,6 @@ public class Menu {
                 mostrarOpcion(mostrarMenu());
         }
     }
+	
+	
 }

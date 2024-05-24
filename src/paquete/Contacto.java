@@ -67,6 +67,14 @@ public class Contacto extends Persona {
 		this.email = email;
 	}
 	
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 	/**
 	 * 
 	 * @return devuelve un String con la descripcion del contacto
@@ -82,6 +90,8 @@ public class Contacto extends Persona {
 		des+=telefono;
 		des+=" , ";
 		des+=email;
+		des+=" , ";
+		des+=direccion;
 		return des;
 	}
 	
