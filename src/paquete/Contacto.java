@@ -1,8 +1,8 @@
 package paquete;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Contacto extends Persona {
+public class Contacto extends Persona implements Serializable{ //Serializable Sirve para poder convertir una clase en un flujo de bytes
 	
 	/**
 	 * Atributo int telefono, Sirve para guardar el telefono del contacto
@@ -14,25 +14,19 @@ public class Contacto extends Persona {
 	private String email;
 	
 	/**
-	 * Atributo String direccion, Sirve para guardar la direccion postal del contacto
-	 */
-	private String direccion;
-	/**
 	 * 
 	 * @param Permite ingresar el nombre del contacto, heredado de Persona
 	 * @param Permite ingresar los apellidos del contacto, heredado de Persona
 	 * @param Permite ingresar la fecha de nacimiento del contacto, heredado de Persona
 	 * @param Permite ingresar el telefono del contacto
 	 * @param Permite ingresar el email del contacto
-	 * @param Permite ingresar la direccion postal del contacto
 	 * @see <a href="Persona.java">Link a la clase Persona</a>
 	 * 
 	 */
-	public Contacto(String nombre, String apellidos, String fecha_nac, int telefono, String email, String direccion) {
-		super(nombre, apellidos, fecha_nac);
+	public Contacto(String nombre, String apellidos, int anio, int mes, int dia, int telefono, String email) {
+		super(nombre, apellidos, anio, mes, dia);
 		this.telefono = telefono;
 		this.email = email;
-		this.direccion = direccion;
 	}
 
 	/**
@@ -66,14 +60,6 @@ public class Contacto extends Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
 
 	/**
 	 * 
@@ -90,8 +76,6 @@ public class Contacto extends Persona {
 		des+=telefono;
 		des+=" , ";
 		des+=email;
-		des+=" , ";
-		des+=direccion;
 		return des;
 	}
 }

@@ -1,5 +1,7 @@
 package paquete;
 
+import java.time.LocalDate;
+
 public class Persona {
 		
 		/**
@@ -13,18 +15,18 @@ public class Persona {
 		/**
 		 * Atributo String fecha_nac, Sirve para guardar la fecha de nacimiento de la persona
 		 */
-		private String fecha_nac;
+		private LocalDate fecha_nac;
 		
 		/**
 		 * 
-		 * @param Permite ingresar el nombre de la persona
-		 * @param Permite ingresar los apellidos de la persona
-		 * @param Permite ingresar la fecha de nacimiento de la persona
+		 * @param nombre Permite ingresar el nombre de la persona
+		 * @param apellidos Permite ingresar los apellidos de la persona
+		 * @param fecha_nac Permite ingresar la fecha de nacimiento de la persona
 		 */
-		public Persona(String nombre, String apellidos, String fecha_nac) {
+		public Persona(String nombre, String apellidos, int anio, int mes, int dia) {
 			this.nombre = nombre;
 			this.apellidos = apellidos;
-			this.fecha_nac = fecha_nac;
+			this.fecha_nac = LocalDate.of(anio, mes, dia);
 		}
 
 		/**
@@ -63,16 +65,18 @@ public class Persona {
 		 * 
 		 * @return devuelve un String con la fecha de nacimiento de la persona
 		 */
-		public String getFecha_nac() {
+		public LocalDate getFecha_nac() {
 			return fecha_nac;
 		}
 		
 		/**
 		 * 
-		 * @param Permite establecer una nueva fecha de nacimiento para la persona
+		 * @param Permite introducir el año de nacimiento
+		 * @param Permite introducir el mes de nacimiento
+		 * @param Permite introducir el dia de nacimiento
 		 */
-		public void setFecha_nac(String fecha_nac) {
-			this.fecha_nac = fecha_nac;
+		public void setFecha_nac(int anio, int mes, int dia) {
+			this.fecha_nac = LocalDate.of(anio, mes, dia);
 		}
 		
 		
