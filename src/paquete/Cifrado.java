@@ -3,14 +3,17 @@ package paquete;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase con la funcion de cifrar y descifrar los contactos del usuario
+ */
 public class Cifrado {
 	
 	/**
 	 * 
-	 * @param cadena, Permite ingresar la cadena de texto a cifrar
-	 * @param clave, Permite ingresar la clave para cifrar la cadena de texto con los distintos cifrados
+	 * @param cadena Permite ingresar la cadena de texto a cifrar
+	 * @param clave Permite ingresar la clave para cifrar la cadena de texto con los distintos cifrados
 	 * @param esXOR Permite ingresar un boolean que si es true es cifrado XOR, false si es cifrado Cesar
-	 * @return devuelve la frase cifrada según el tipo de cifrado en forma de String
+	 * @return La frase cifrada según el tipo de cifrado en forma de String
 	 */
 	public String cifrar(String cadena, int clave, boolean esXOR) {
 		
@@ -55,6 +58,13 @@ public class Cifrado {
 		return res;
 	}
 	
+	/**
+	 * 
+	 * @param numero Permite introducir un numero de tipo int para cifrarlo
+	 * @param clave Permite introducir una clave para cifrar el numero
+	 * @param esXOR Permite introducir el tipo de cifrado (true: xor | false: cesar) 
+	 * @return El numero cifrado
+	 */
 	public int cifrar2(int numero, int clave, boolean esXOR) {
 		
 		/**
@@ -85,6 +95,13 @@ public class Cifrado {
 		return res;
 	}
 	
+	/**
+	 * 
+	 * @param cadena Permite introducir la cadena de texto a descifrar
+	 * @param clave Permite introducir la clave para descifrar
+	 * @param esXOR Permite introducir el tipo de cifrado utilizado (true: xor | false: cesar)
+	 * @return La cadena descifrada
+	 */
 	public String descifrar(String cadena, int clave, boolean esXOR) {
 		
 		/**
@@ -128,6 +145,13 @@ public class Cifrado {
 		return res;
 	}
 	
+	/**
+	 * 
+	 * @param numero Permite introducir el numero a descifrar
+	 * @param clave Permite introducir la clave para descifrar
+	 * @param esXOR Permite introducir el tipo de cifrado utilizado (true: xor | false: cesar)
+	 * @return El numero descifrada
+	 */
 	public int descifrar2(int numero, int clave, boolean esXOR) {
 		
 		/**
@@ -160,7 +184,14 @@ public class Cifrado {
 			}
 		return res;
 	}
-
+	
+	/**
+	 * 
+	 * @param contactos Permite introducir la lista de contactos a cifrar
+	 * @param clave Permite introducir la clave para cifrar
+	 * @param tipoC Permite introducir el tipo para cifrar (true: xor | false: cesar)
+	 * @return La lista de contactos ya cifrada
+	 */
 	public List<Contacto> cifrarContactos(List<Contacto> contactos, int clave, boolean tipoC){
 		String nombre; 
 		String apellidos; 
@@ -207,6 +238,13 @@ public class Cifrado {
 		return contactoscifrados;
 	}
 	
+	/**
+	 * 
+	 * @param contactos Permite introducir la lista de contactos a descifrar
+	 * @param clave Permite introducir la clave para descifrar
+	 * @param tipoC Permite introducir el tipo para descifrar (true: xor | false: cesar)
+	 * @return La lista de contactos ya descifrada
+	 */
 	public List<Contacto> descifrarContactos(List<Contacto> contactos, int clave, boolean tipoC){
 		String nombre; 
 		String apellidos; 

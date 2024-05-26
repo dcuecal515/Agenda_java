@@ -2,6 +2,9 @@ package paquete;
 
 import java.io.Serializable;
 
+/**
+ * Clase en la que se guardan los datos de los contactos del usuario
+ */
 public class Contacto extends Persona implements Serializable{ //Serializable Sirve para poder convertir una clase en un flujo de bytes
 	
 	/**
@@ -14,12 +17,15 @@ public class Contacto extends Persona implements Serializable{ //Serializable Si
 	private String email;
 	
 	/**
+	 * Crea una instancia de Contacto con los detalles proporcionados.
 	 * 
-	 * @param Permite ingresar el nombre del contacto, heredado de Persona
-	 * @param Permite ingresar los apellidos del contacto, heredado de Persona
-	 * @param Permite ingresar la fecha de nacimiento del contacto, heredado de Persona
-	 * @param Permite ingresar el telefono del contacto
-	 * @param Permite ingresar el email del contacto
+	 * @param nombre    Es el nombre del contacto, heredado de Persona.
+	 * @param apellidos Son los apellidos del contacto, heredado de Persona.
+	 * @param anio      Es el año de nacimiento del contacto, heredado de Persona.
+	 * @param mes       Es el mes de nacimiento del contacto, heredado de Persona.
+	 * @param dia       Es el día de nacimiento del contacto, heredado de Persona.
+	 * @param telefono  Es el teléfono del contacto.
+	 * @param email     Es el email del contacto.
 	 * @see <a href="Persona.java">Link a la clase Persona</a>
 	 * 
 	 */
@@ -31,15 +37,16 @@ public class Contacto extends Persona implements Serializable{ //Serializable Si
 
 	/**
 	 * 
-	 * @return devuelve el telefono del contacto de tipo int
+	 * @return El telefono del contacto de tipo int
 	 */
 	public int getTelefono() {
 		return telefono;
 	}
 
 	/**
+	 * Permite actualizar el telefono del contacto
 	 * 
-	 * @param Permite ingresar el nuevo telefono que se guardará en la variable telefono del contacto
+	 * @param telefono El numero de telefono nuevo
 	 */
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
@@ -47,15 +54,16 @@ public class Contacto extends Persona implements Serializable{ //Serializable Si
 
 	/**
 	 * 
-	 * @return devuelve el email del contacto de tipo String
+	 * @return El email del contacto de tipo String
 	 */
 	public String getEmail() {
 		return email;
 	}
 
 	/**
+	 * Permite actualizar el email del contacto
 	 * 
-	 * @param Permite ingresar el nuevo email que se guardará en la variable email del contacto
+	 * @param email Es el email del contacto
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -63,7 +71,7 @@ public class Contacto extends Persona implements Serializable{ //Serializable Si
 
 	/**
 	 * 
-	 * @return devuelve un String con la descripcion del contacto
+	 * @return Un String con la descripcion del contacto
 	 */
 	public String describir() {
 		String des = "";

@@ -3,6 +3,9 @@ package paquete;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Clase que gestiona el menu de opciones que puede realizar el usuario
+ */
 public class Menu {
 	/**
 	 * Atributo de Tipo Scanner, sirve para escanear los textos introducidos por el usuario
@@ -31,7 +34,7 @@ public class Menu {
 	
 	/**
 	 * 
-	 * @return Devuelve la opcion elegida del menu
+	 * @return La opcion elegida del menu
 	 */
 	public int mostrarMenu() {
 		System.out.println("|--------------------------------------------|");
@@ -52,10 +55,10 @@ public class Menu {
 	
 	/**
 	 * 
-	 * @param Permite introducir la opcion elegida en el menu del metodo anterior
-	 * @throws ClassNotFoundException sirve para introducir a fichero objetos
-	 * @throws EOFException
-	 * @throws IOException
+	 * @param opcion Permite introducir la opcion elegida en el menu del metodo anterior
+	 * @throws ClassNotFoundException Fallo por lectura o escritura en fichero
+	 * @throws EOFException Fallo por lectura o escritura en fichero
+	 * @throws IOException Fallo por lectura o escritura en fichero
 	 */
 	public void mostrarOpcion(int opcion) throws ClassNotFoundException, EOFException, IOException {
 		/**
@@ -115,72 +118,121 @@ public class Menu {
                 mostrarOpcion(mostrarMenu());
                 break;
             case 2:
+            	// Opcion editar contacto
             	
+            	// Pide el nombre del contacto para buscarlo
                 System.out.println("Introduce el nombre del contacto a editar: ");
                 nombre = sc.next();
+                
+                // Guarda el contacto si lo encuentra en la clase Lista
                 contacto = lista.buscarContacto(nombre);
+                // Si existe lo puede editar
                 if(contacto != null)
                 	lista.editarContacto(contacto);
-                else
+                else // Sino no lo puede editar
                 	System.out.println("No existe contacto con ese nombre");
+                
+                // Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 3:
+            	// Opcion consultar contacto
+            	
+            	// Pide el nombre del contacto para buscarlo
             	System.out.println("Introduce el nombre del contacto a consultar: ");
                 nombre = sc.next();
+                
+                // Guarda el contacto si lo encuentra en la clase Lista
                 contacto= lista.buscarContacto(nombre);
+                
+                // Si el contacto existe le hace la consulta
                 if (contacto!=null)
                 	lista.consultarContacto(contacto);
-                else
+                else // Sino no lo puede consultar
                 	System.out.println("No existe contacto con ese nombre");
+                
+                // Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 4:
-            	System.out.println("Introduce el nombre del contacto a consultar: ");
+            	// Opcion eliminar contacto
+            	
+            	// Pide el nombre del contacto para buscarlo
+            	System.out.println("Introduce el nombre del contacto a eliminar: ");
                 nombre = sc.next();
+                
+                // Guarda el contacto si lo encuentra en la clase Lista
                 contacto = lista.buscarContacto(nombre);
+                
+                // Si el contacto existe lo elimina
                 if (contacto!=null)
                 	lista.eliminarContacto(contacto);
-                else
+                else // Sino no lo elimina
                 	System.out.println("No existe contacto con ese nombre");
+                
+                // Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 5:
+            	// Opcion numero de contactos
+            	
+            	// Te muestra el numero de contactos
                 lista.numeroContactos();
+                
+                // Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 6:
+            	// Opcion generar lista en pantalla
+            	
+            	// Si hay al menos un contacto muestra una lista con los contactos
             	if(lista.numContactos() != 0)
             		lista.listarContactos();
             	else
             		System.out.println("No hay contactos en la lista");
+            	
+            	// Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 7:
+            	// Opcion generar listado en fichero
+            	
+            	// Pide el nombre del fichero donde guardará la lista de contactos
             	System.out.println("Introduce el fichero en el que introduciras los contactos: ");
             	String nomfichero = sc.next();
             	
+            	// Crea el escritor del fichero y lo inicializa en null
             	PrintWriter fichero = null;
-            	try {
+            	
+            	try { // Inicializa el escritor de fichero para que escriba en el archivo con el nombre introducido por el usuario
             		fichero = new PrintWriter(new FileWriter(nomfichero));
+            		
+            		// Guarda la lista en el fichero de texto
             		lista.volcarListaATexto(fichero);
-            	}catch(IOException e) {
+            	}catch(IOException e) { // Si hay error lo imprime
             		System.err.println(e.toString());
             	}
-            	finally {
+            	finally { // Si no esta el fichero vacio lo cierra
             		if(fichero != null)
             			fichero.close();
             	}
-                
+            	
+                // Vuelve a mostrar el menu y pedir opcion
                 mostrarOpcion(mostrarMenu());
                 break;
             case 8:
+            	// Opcion salir
+            	
                 System.out.println("Saliendo...");
                 break;
             default:
+            	// Opcion invalida
+            	
+            	// Te vuelve a mostrar el menu y pedir opcion
                 System.out.println("Opción incorrecta");
                 mostrarOpcion(mostrarMenu());
         }
+		
 		if(lista.numContactos() != 0) { // Guardamos la lista 
 			lista.volcarLista();
 		}

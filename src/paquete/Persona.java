@@ -2,6 +2,9 @@ package paquete;
 
 import java.time.LocalDate;
 
+/**
+ * Clase en la que se almacenan los datos de las personas del usuario
+ */
 public class Persona {
 		
 		/**
@@ -13,15 +16,17 @@ public class Persona {
 		 */
 		private String apellidos;
 		/**
-		 * Atributo String fecha_nac, Sirve para guardar la fecha de nacimiento de la persona
+		 * Atributo LocalDate fecha_nac, Sirve para guardar la fecha de nacimiento de la persona
 		 */
 		private LocalDate fecha_nac;
 		
 		/**
 		 * 
-		 * @param nombre Permite ingresar el nombre de la persona
-		 * @param apellidos Permite ingresar los apellidos de la persona
-		 * @param fecha_nac Permite ingresar la fecha de nacimiento de la persona
+		 * @param nombre Es el nombre de la persona
+		 * @param apellidos Son los apellidos de la persona
+		 * @param anio Es el año de nacimiento de la persona
+		 * @param mes Es el mes de nacimiento de la persona
+		 * @param dia Es el dia de nacimiento de la persona
 		 */
 		public Persona(String nombre, String apellidos, int anio, int mes, int dia) {
 			this.nombre = nombre;
@@ -31,7 +36,7 @@ public class Persona {
 
 		/**
 		 * 
-		 * @return devuelve un String con el nombre de la persona
+		 * @return Un String con el nombre de la persona
 		 */
 		public String getNombre() {
 			return nombre;
@@ -39,7 +44,7 @@ public class Persona {
 
 		/**
 		 * 
-		 * @param Permite establecer un nuevo nombre a la persona
+		 * @param nombre Permite establecer un nuevo nombre a la persona
 		 */
 		public void setNombre(String nombre) {
 			this.nombre = nombre;
@@ -47,7 +52,7 @@ public class Persona {
 		
 		/**
 		 * 
-		 * @return devuelve un String con los apellidos de la persona
+		 * @return Un String con los apellidos de la persona
 		 */
 		public String getApellidos() {
 			return apellidos;
@@ -55,7 +60,7 @@ public class Persona {
 
 		/**
 		 * 
-		 * @param Permite establecer unos nuevos apellidos a la persona
+		 * @param apellidos Permite establecer unos nuevos apellidos a la persona
 		 */
 		public void setApellidos(String apellidos) {
 			this.apellidos = apellidos;
@@ -63,7 +68,7 @@ public class Persona {
 
 		/**
 		 * 
-		 * @return devuelve un String con la fecha de nacimiento de la persona
+		 * @return Un String con la fecha de nacimiento de la persona
 		 */
 		public LocalDate getFecha_nac() {
 			return fecha_nac;
@@ -71,9 +76,9 @@ public class Persona {
 		
 		/**
 		 * 
-		 * @param Permite introducir el año de nacimiento
-		 * @param Permite introducir el mes de nacimiento
-		 * @param Permite introducir el dia de nacimiento
+		 * @param anio Permite introducir el año de nacimiento
+		 * @param mes Permite introducir el mes de nacimiento
+		 * @param dia Permite introducir el dia de nacimiento
 		 */
 		public void setFecha_nac(int anio, int mes, int dia) {
 			this.fecha_nac = LocalDate.of(anio, mes, dia);

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase que gestiona la lista de contactos del usuario
+ */
 public class Lista {
 	
 	/**
@@ -23,7 +26,7 @@ public class Lista {
 	
 	/**
 	 * 
-	 * @return Devuelve un nuevo contacto con los datos introducidos por el usuario
+	 * @return Un nuevo contacto con los datos introducidos por el usuario
 	 */
 	public Contacto pedirDatosContacto() {
 		/**
@@ -87,7 +90,7 @@ public class Lista {
 	
 	/**
 	 * 
-	 * @param Permite introducir un contacto de tipo Contacto
+	 * @param contacto Permite introducir un contacto de tipo Contacto
 	 */
 	public void agregarContacto(Contacto contacto) {
 		listacontactos.add(contacto);
@@ -95,8 +98,8 @@ public class Lista {
 	
 	/**
 	 * 
-	 * @param Permite introducir un nombre de tipo String
-	 * @return Devuelve el contacto si lo encuentra sino devuelve null
+	 * @param nombre Permite introducir un nombre de tipo String
+	 * @return El contacto si lo encuentra sino devuelve null
 	 */
 	public Contacto buscarContacto(String nombre) {
 		for (Contacto contacto : listacontactos) {
@@ -109,12 +112,20 @@ public class Lista {
 	
 	/**
 	 * 
-	 * @param Permite introducir el contacto a editar
+	 * @param contacto Permite introducir el contacto a editar
 	 */
 	public void editarContacto(Contacto contacto) {
 		
+		/**
+		 * Atributo de tipo int, sirve para almacenar la opcion que quiere editar
+		 */
 		int opcion;
+		/**
+		 * Atributo de tipo Scanner, sirve para pedir los datos al usuario
+		 */
 		Scanner sc = new Scanner(System.in);
+		
+		// Muestra las opciones posibles y pide una opcion
 		do {
 			System.out.println("|-----------------------------------|");
 			System.out.println("|   1. Cambiar nombre y apellidos   |");
@@ -125,6 +136,8 @@ public class Lista {
 			System.out.println("|-----------------------------------|");
 			System.out.println("| Elige una opcion: ");
 			opcion = sc.nextInt();
+			
+			// Actualiza segun la opcion el contacto los nuevos datos
 			switch (opcion) {
 			case 1: {
 				String nombre;
@@ -189,9 +202,23 @@ public class Lista {
 		
 	}
 	
+	/**
+	 * 
+	 * @param contacto Permite introducir el contacto a consultar
+	 */
 	public void consultarContacto(Contacto contacto) {
+		
+		/**
+		 * Atributo de tipo int, sirve para almacenar la opcion que quiere consultar
+		 */
 		int opcion=0;
+		
+		/**
+		 * Atributo de tipo Scanner, sirve para pedir los datos al usuario
+		 */
 		Scanner sc = new Scanner(System.in);
+		
+		// Muestra las opciones posibles y pide una opcion
 		while (opcion != 6) {
 			do {
 				System.out.println("|-----------------------------------|");
@@ -203,6 +230,8 @@ public class Lista {
 				System.out.println("|-----------------------------------|");
 				System.out.println("| Elige una opcion: ");
 				opcion = sc.nextInt();
+				
+				// Muestra segun la opcion el contacto los nuevos datos
 				switch (opcion) {
 				case 1: {
 					System.out.println("Nombre: "+contacto.getNombre());
@@ -230,17 +259,31 @@ public class Lista {
 				}
 			} while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 4 && opcion != 5);
 		}
+		sc.close();
 	}
 	
+	/**
+	 * 
+	 * @param contacto Permite introducir un contacto para eliminarlo
+	 */
 	public void eliminarContacto(Contacto contacto) {
+		// Elimina el contacto de la lista de contactos
 		listacontactos.remove(contacto);
+		
+		// Muestra el nombre del del contacto que se elimino
 		System.out.println("Eliminando contacto con nombre: "+contacto.getNombre());
 	}
 	
+	/**
+	 * Muestra el numero de contactos
+	 */
 	public void numeroContactos() {
 		System.out.println("Tienes un total de "+listacontactos.size()+" contactos");
 	}
 	
+	/**
+	 * Muestra la lista de los contactos
+	 */
 	public void listarContactos() {
 		System.out.println("Contactos: ");
 		for (Contacto contacto : listacontactos) {
@@ -248,56 +291,99 @@ public class Lista {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return El numero de contactos de la lista
+	 */
 	public int numContactos() {
 		return listacontactos.size();
 	}
 	
+	/**
+	 * 
+	 * @param clave Permite introducir la clave de cifrado
+	 * @param tipoC Permite introducir el tipo de cifrado 
+	 */
 	public void cifrarContactos(int clave, boolean tipoC) {
+		// Cifra la lista de contatos con una clave y un tipo de cifrado
 		listacontactos=cifrado.cifrarContactos(listacontactos, clave, tipoC);
 	}
 	
+	/**
+	 * 
+	 * @param clave Permite introducir la clave de cifrado
+	 * @param tipoC Permite introducir el tipo de cifrado
+	 */
 	public void descifrarContactos(int clave, boolean tipoC) {
+		// Descifra la lista de contactos con una clave y un tipo de cifrado
 		listacontactos=cifrado.descifrarContactos(listacontactos, clave, tipoC);
 	}
 	
+	/**
+	 * Pasa la lista de contactos a un archivo binario llamado: "contactos.bin"
+	 */
 	public void volcarLista() {
 		try { 
+			// Crea un objeto fichero de escritura con el nombre contactos.bin y lo convierte en 
+			// un fichero al que se puede introducir objetos en binario
 			FileOutputStream archivo = new FileOutputStream("contactos.bin");
 			ObjectOutputStream escritura = new ObjectOutputStream(archivo);
+			// Le añade todos los contactos
 			for (Contacto contacto : listacontactos) {
 				escritura.writeObject(contacto);
 				System.out.println("Objeto añadido con exito");
 			}
+			// Cierra el fichero de escritura
 			escritura.close();
-		}catch (IOException error) {
+		}catch (IOException error) { // Si hay error al escribir lo muestra
 			error.printStackTrace(System.out);
 		}
 	}
-	
+	/**
+	 * 
+	 * @return Una lista de Contactos con los contactos guardados en el fichero contactos.bin
+	 * Excepciones que lanza:
+	 * @throws ClassNotFoundException Fallo por lectura o escritura en fichero
+	 * @throws EOFException Fallo por lectura o escritura en fichero
+	 * @throws IOException Fallo por lectura o escritura en fichero
+	 */
 	public List<Contacto> recuperarLista() throws ClassNotFoundException, EOFException, IOException {
+		// Crea una lista nueva para almacenar los contactos guardados
 		List<Contacto> contactos = new ArrayList<Contacto>();
+		// Crea un contacto para guardar los contactos dentro de la lista
 		Contacto contacto = null;
 		
-			
+		// Busca un archivo de lectura llamado contactos.bin de objetos
 		FileInputStream archivo = new FileInputStream("contactos.bin");
 		ObjectInputStream lectura = new ObjectInputStream(archivo);
 		
+		// Intenta leer el primer objeto
 		contacto = (Contacto) lectura.readObject();
 		
+		// si hay objetos lo añade a la lista y busca otro
 		while(contacto != null) {
 			contactos.add(contacto);
 			contacto = (Contacto) lectura.readObject();
 		}
-		return contactos;
-			
+		
+		// Devuelve la lista
+		return contactos;	
 	}
 	
+	/**
+	 * 
+	 * @param fichero Permite introducir el fichero en el que se va a guardar la lista actual de contactos
+	 */
 	public void volcarListaATexto(PrintWriter fichero) {
 		for (Contacto contacto : listacontactos) {
 			fichero.println(contacto.describir());
 		}
 	}
 	
+	/**
+	 * 
+	 * @param listacontactos Permite actualizar la lista de contactos
+	 */
 	public void setListacontactos(List<Contacto> listacontactos) {
 		this.listacontactos = listacontactos;
 	}
